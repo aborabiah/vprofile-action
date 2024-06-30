@@ -55,8 +55,8 @@ jobs:
 
 
   BUILD_AND_PUBLISH:   # New Job 
-  needs: Testing # اذا ماحطيت هذي كل الجوبين بيشتغلون in parallel
-  runs-on: ubuntu-latest # في كونتينر اخر معزول
+    needs: Testing # اذا ماحطيت هذي كل الجوبين بيشتغلون in parallel
+    runs-on: ubuntu-latest # في كونتينر اخر معزول
     steps:
       - name: Code checkout
         uses: actions/checkout@v4
