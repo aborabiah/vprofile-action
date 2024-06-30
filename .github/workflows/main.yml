@@ -6,7 +6,7 @@ env:
   EKS_CLUSTER: vprofile-eks # عشان بنستعملها اكثر من مره
 jobs:
   Testing: # to test the code
-  runs-on: ubuntu-latest # اخر اصدار من يوبنتو يجي فيه مافن
+  runs-on: ubuntu-latest  # اخر اصدار من يوبنتو يجي فيه مافن
   steps:
     - name: Code checkout
       uses: actions/checkout@v4
@@ -27,20 +27,18 @@ jobs:
     - name: Setup SonarQube
       uses: warchant/setup-sonar-scanner@v7
 
-   
      # Run sonar-scanner
     - name: SonarQube Scan
       run: sonar-scanner
          -Dsonar.host.url=${{ secrets.SONAR_URL }}
-         -Dsonar.login=${{ secrets.SONAR_TOKEN }} # FROM Github Secrets
+         -Dsonar.login=${{ secrets.SONAR_TOKEN }}
          -Dsonar.organization=${{ secrets.SONAR_ORGANIZATION }}
          -Dsonar.projectKey=${{ secrets.SONAR_PROJECT_KEY }}
          -Dsonar.sources=src/
          -Dsonar.junit.reportsPath=target/surefire-reports/ 
-         -Dsonar.jacoco.reportsPath=target/jacoco.exec  # all report created by maven , and pass it with qualtiy 
+         -Dsonar.jacoco.reportsPath=target/jacoco.exec 
          -Dsonar.java.checkstyle.reportPaths=target/checkstyle-result.xml
-         -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/  
-     
+         -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/       
      
      
      
